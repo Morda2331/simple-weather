@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Simple Weather</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Weather App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Погода сейчас</h1>
-    <div id="weather">
-        <p>Введите название города и нажмите "Показать погоду"</p>
-        <input type="text" id="city" placeholder="Город" />
-        <button id="getWeather">Показать погоду</button>
-        <div id="result"></div>
-    </div>
+  <div class="weather-container">
+    <h1>Погода</h1>
+    <input type="text" id="cityInput" placeholder="Введите город" />
+    <button onclick="getWeather()">Узнать погоду</button>
+    <div id="weatherResult"></div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

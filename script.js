@@ -1,21 +1,23 @@
 async function getWeather() {
-  const city = document.getElementById("city").value;
-  const apiKey = const apiKey = "61b4fe80ed0f28e826bdb8f297630842";
+  const city = document.getElementById("cityInput").value;
+  const apiKey = "61b4fe80ed0f28e826bdb8f297630842";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`;
 
   try {
     const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Город не найден");
-    }
     const data = await response.json();
-    const result = `
-      Город: ${data.name}<br>
-      Температура: ${data.main.temp}°C<br>
-      Погода: ${data.weather[0].description}
-    `;
-    document.getElementById("result").innerHTML = result;
+
+    if (data.cod === 200) {
+      const result = `
+        <p><strong>${data.name}</strong></p>
+        <p>Температура: ${data.main.temp}°C</p>
+        <p>Погода: ${data.weather[0].description}</p>
+      `;
+      document.getElementById("weatherResult").innerHTML = result;
+    } else {
+      document.getElementById("weatherResult").innerHTML = "Город не найден.";
+    }
   } catch (error) {
-    document.getElementById("result").innerHTML = error.message;
+    document.getElementById("weatherResult").innerHTML = "Ошибка при получении данных.";
   }
 }
